@@ -1,5 +1,7 @@
 describe('Dons first test', () => {
-
+  beforeEach(() => {
+    cy.visit('https://source.thenbs.com/manufacturer/dyson/nakAxHWxDZprdqkBaCdn4U/overview');
+  });
     it('navigate to the Source website', () => {
 
         cy.visit('https://source.thenbs.com/')

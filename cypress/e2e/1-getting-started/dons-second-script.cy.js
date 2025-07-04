@@ -21,4 +21,32 @@ describe('Dyson Manufacturer Overview Page', () => {
   it('should have a navigation menu', () => {
     cy.get('nav').should('exist');
   });
-});
+  it('should have a logo image not visible', () => {
+    cy.get('img').first().should('not.be.visible');
+  });
+
+  it('should have a contact button or link', () => {
+    cy.contains(/contact/i).should('exist');
+  });
+
+  it('should not have any 404 errors in network requests', () => {
+    cy.intercept('GET', '**').as('getRequests');
+    cy.wait('@getRequests').then((interception) => {
+      expect(interception.response.statusCode).not.to.eq(404);
+    });
+  });
+
+  it('should have at least one product or service listed', () => {
+    cy.contains(/product|service/i).should('exist');
+  });
+
+  it('should have a footer section', () => {
+    cy.get('footer').should('exist');
+  });
+
+  it('should have a visible products section', () => {
+    cy.contains('Products').should('be.visible');
+  });
+  
+
+  });
