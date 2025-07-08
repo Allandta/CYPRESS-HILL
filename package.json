@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
+  },
   "devDependencies": {
     "axe-core": "^4.10.3",
     "cypress": "14.4.1",
