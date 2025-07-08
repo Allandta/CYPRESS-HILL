@@ -32,7 +32,6 @@ describe('Source Categories Navigation & Tests', () => {
         WallsAndBarriers.clickBarriersRailsAndFences();
 
         // Assert that the URL is correct for the "Barriers, rails and fences" category.
-        // NOTE: 'categories' should be 'Categories' (case sensitive).
         Categories.checkURLContainsExpectedText('/category/walls-and-barriers/barriers-rails-and-fences/daE3gYnUa9FpPVDMUZuzBd');
 
         // Example of how to check for a further subcategory (commented out):
