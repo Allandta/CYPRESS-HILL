@@ -1,8 +1,7 @@
-Cypress.on('uncaught:exception', (err, runnable) => {
-  // This prevents Cypress from failing the test when the application throws an uncaught exception.
-  // Useful if the site has errors that don't affect your test flow.
-  return false;
-});
+
+
+import 'cypress-axe';
+
 
 describe('Source Categories Navigation', () => {
   // This hook runs before each test in this suite.
@@ -10,7 +9,7 @@ describe('Source Categories Navigation', () => {
     // Visit the main page of the application.
     cy.visit('https://source.thenbs.com/');
     // Accept the cookie consent banner if it appears.
-    cy.get('#onetrust-accept-btn-handler').click();
+    cy.get('#onetrust-accept-btn-handler', { timeout: 10000 }).should('be.visible').click();
   });
 
   it('should navigate from All categories to Walls and barriers', () => {
@@ -39,7 +38,32 @@ describe('Source Categories Navigation', () => {
     // The following lines are commented out, but show how to check for and click on a further subcategory:
     // // Verify the link for "Balustrade and handrail systems" exists.
     // cy.contains('Balustrade and handrail systems', { timeout: 10000 }).should('exist');
-    // // Click on "Balustrade and handrail systems".
-    // cy.contains('Balustrade and handrail systems', { timeout: 10000 }).click();
   });
+  
+  it('should have no detectable accessibility violations on load', () => {
+cy.injectAxe();
+        cy.checkA11y(null, null, (violations) => {
+            // Log the violations without failing the test
+            cy.task('log', violations);
+            violations.forEach((violation) => {
+                const nodes = Cypress.$(
+                    violation.nodes.map((node) => node.target).join(',')
+                );
+                Cypress.log({
+                    name: 'a11y error!',
+                    consoleProps: () => violation,
+                    $el: nodes,
+                    message: `[${violation.id}] ${violation.help} (${violation.nodes.length} nodes)`,
+                });
+            });
+        }, { timeout: 10000 }); // Increase the timeout to 10 seconds
+  });
+it('should match the homepage snapshot', () => {
+  cy.matchImageSnapshot();
+});
+
+
+
+
+
 });
