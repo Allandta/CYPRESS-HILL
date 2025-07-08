@@ -47,4 +47,8 @@ describe('Source Categories Navigation & Tests', () => {
         // Take a visual snapshot of the homepage and compare it to the baseline image.
         BarrierRailsFences.compareSnapshots();
     });
+
+    it('should show and operate the Back to Top button', () => {
+        BarrierRailsFences.ensureBackToTopButtonIsWorking();
+    });
 });
