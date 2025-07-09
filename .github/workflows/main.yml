@@ -23,4 +23,4 @@ jobs:
         run: npm ci --legacy-peer-deps
 
       - name: Run Cypress tests
-        run: npx cypress run --spec "cypress/e2e/1-geting-started/dons-fourth-script-with-pom.cy.js"
+        run: npx cypress run --spec "cypress/e2e/1-getting-started/dons-fourth-script-with-pom.cy.js"
