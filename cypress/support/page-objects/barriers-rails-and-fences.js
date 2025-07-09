@@ -49,6 +49,44 @@ class BarrierRailsFences {
         cy.window().its('scrollY').should('be.lessThan', 50);
     }
 
+    testBreadcrumbs() {
+        // Check the breadcrumb structure and content
+        cy.get('ul') // Use a more specific selector if possible
+            .first() // If there are multiple <ul>, target the first or use a class/data attribute
+            .within(() => {
+                // 1st breadcrumb: Home
+                cy.get('li').eq(0)
+                    .should('contain.text', 'Home')
+                    .find('a')
+                    .should('have.attr', 'href', '/');
+
+                // 2nd breadcrumb: Categories
+                cy.get('li').eq(1)
+                    .should('contain.text', 'Categories')
+                    .find('a')
+                    .should('have.attr', 'href', '/categories');
+
+                // 3rd breadcrumb: Walls and barriers
+                cy.get('li').eq(2)
+                    .should('contain.text', 'Walls and barriers')
+
+                // 4th breadcrumb: Barriers, rails and fences (no link)
+                cy.get('li').eq(3)
+                    .should('contain.text', 'Barriers, rails and fences')
+                    .find('a')
+                    .should('not.exist');
+            });
+    }
+    // Check the presence and functionality of the sales support email link
+    checkSalesSupportEmail() {
+        cy.get('a[title^="Email salessupport@theNBS.com"]')
+            .should('have.attr', 'href')
+            .and('include', 'mailto:salessupport@theNBS.com')
+            .and('include', 'subject=Customer enquiry from NBS Source');
+        cy.get('a[title^="Email salessupport@theNBS.com"]')
+            .should('contain', 'salessupport@theNBS.com');
+    }
+
 }
 // Export a singleton instance of the NBSHomepage class
 export default new BarrierRailsFences();
