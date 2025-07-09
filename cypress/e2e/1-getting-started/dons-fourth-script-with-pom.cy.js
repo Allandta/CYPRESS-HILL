@@ -61,4 +61,7 @@ describe('Source Categories Navigation & Tests', () => {
         BarrierRailsFences.testBreadcrumbs();
     
 });
+it('should display the correct sales support email', () => {
+    BarrierRailsFences.checkSalesSupportEmail();
+});
 });

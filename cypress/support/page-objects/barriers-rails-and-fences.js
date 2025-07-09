@@ -69,7 +69,29 @@ class BarrierRailsFences {
         // Assert that the page is scrolled to (near) the top
         cy.window().its('scrollY').should('be.lessThan', 50);
     }
-
+testBreadcrumbs() {
+        // Check the breadcrumb structure and content
+        cy.get('ul')
+            .first()
+            .within(() => {
+                // Home breadcrumb
+                cy.get('li').eq(0).find('a').should('have.attr', 'href', '/').and('contain', 'Home');
+                // Categories breadcrumb
+                cy.get('li').eq(1).find('a').should('have.attr', 'href', '/categories').and('contain', 'Categories');
+                // Current page breadcrumb (not a link)
+                cy.get('li').eq(2).should('contain', ' Coverings, coatings and finishes ');
+            });
+    }
+    // Check the presence and functionality of the sales support email link
+        checkSalesSupportEmail() {
+        cy.get('a[title^="Email salessupport@theNBS.com"]')
+            .should('have.attr', 'href')
+            .and('include', 'mailto:salessupport@theNBS.com')
+            .and('include', 'subject=Customer enquiry from NBS Source');
+        cy.get('a[title^="Email salessupport@theNBS.com"]')
+            .should('contain', 'salessupport@theNBS.com');
+    }
 }
+
 // Export a singleton instance of the NBSHomepage class
 export default new BarrierRailsFences();
