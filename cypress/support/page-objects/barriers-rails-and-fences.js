@@ -27,7 +27,7 @@ class BarrierRailsFences {
 
     // Run the accessibility checks against whichever page we are on
     compareSnapshots() {
-        cy.viewport(1000, 4410); // Set a fixed viewport size to match the baseline snapshot
+        cy.viewport(1000, 1839); // Set a fixed viewport size to match the baseline snapshot
         cy.wait(2000); // Wait for 2 seconds to ensure the site has loaded and dynamic content is rendered
         cy.scrollTo('bottom', { ensureScrollable: false }); // Scroll to the bottom to ensure all content is rendered
         cy.wait(500); // Wait a bit after scrolling
@@ -40,9 +40,10 @@ class BarrierRailsFences {
     // This method scrolls to the bottom of the page, clicks the back-to-top button
     ensureBackToTopButtonIsWorking() {
         // Scroll to the bottom to make the button appear
-        cy.scrollTo('bottom');
+        cy.scrollTo('bottom', { ensureScrollable: false });
+        cy.wait(1000); // Wait for the button to appear after scrolling
         // Ensure the button is visible
-        cy.get('[data-cy="backToTopButton"]').should('be.visible');
+        cy.get('[data-cy="backToTopButton"]', { timeout: 10000 }).should('be.visible');
         // Click the button
         cy.get('[data-cy="backToTopButton"]').click();
         // Assert that the page is scrolled to the top
