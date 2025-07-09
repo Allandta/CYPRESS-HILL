@@ -39,14 +39,21 @@ class BarrierRailsFences {
     // ensure the back-to-top button is working as expected
     // This method scrolls to the bottom of the page, clicks the back-to-top button
     ensureBackToTopButtonIsWorking() {
-        // Scroll to the bottom to make the button appear
-        cy.scrollTo('bottom', { ensureScrollable: false });
-        cy.wait(1000); // Wait for the button to appear after scrolling
-        // Ensure the button is visible
+        // Set a large viewport to ensure the page is scrollable
+        cy.viewport(1200, 2000);
+
+        // Scroll to the very bottom using JavaScript for reliability
+        cy.window().then(win => {
+            win.scrollTo(0, document.body.scrollHeight);
+        });
+
+        // Wait for the button to appear after scrolling
         cy.get('[data-cy="backToTopButton"]', { timeout: 10000 }).should('be.visible');
+
         // Click the button
         cy.get('[data-cy="backToTopButton"]').click();
-        // Assert that the page is scrolled to the top
+
+        // Assert that the page is scrolled to (near) the top
         cy.window().its('scrollY').should('be.lessThan', 50);
     }
 
