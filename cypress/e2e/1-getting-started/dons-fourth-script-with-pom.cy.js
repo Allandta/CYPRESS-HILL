@@ -54,4 +54,11 @@ describe('Source Categories Navigation & Tests', () => {
         WallsAndBarriers.clickBarriersRailsAndFences();
         BarrierRailsFences.ensureBackToTopButtonIsWorking();
     });
+    it('should display correct breadcrumbs', () => {
+
+  
+  // Check the breadcrumb structure and content
+        BarrierRailsFences.testBreadcrumbs();
+    
+});
 });
