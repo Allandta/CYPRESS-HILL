@@ -26,11 +26,25 @@ class BarrierRailsFences {
     }
 
     // Run the accessibility checks against whichever page we are on
-    compareSnapshots() {
+    async compareSnapshots() {
         cy.viewport(1000, 1839); // Set a fixed viewport size to match the baseline snapshot
-        cy.wait(2000); // Wait for 2 seconds to ensure the site has loaded and dynamic content is rendered
+
+        // Wait for all images to load
+        cy.document().then((doc) => {
+            return Cypress.Promise.all(
+                Array.from(doc.images)
+                    .filter(img => !img.complete)
+                    .map(img => new Cypress.Promise(resolve => {
+                        img.onload = img.onerror = resolve;
+                    }))
+            );
+        });
+
+        // Optionally, wait for network to be idle (if you use fetch/XHR for images or content)
+        // cy.waitUntilNetworkIdle(); // Requires a custom command or plugin
+
         cy.scrollTo('bottom', { ensureScrollable: false }); // Scroll to the bottom to ensure all content is rendered
-        cy.wait(500); // Wait a bit after scrolling
+
         cy.matchImageSnapshot('dyson-homepage', {
             failureThreshold: 0.40, // Allow up to 40% difference
             failureThresholdType: 'percent',
@@ -40,12 +54,11 @@ class BarrierRailsFences {
     // This method scrolls to the bottom of the page, clicks the back-to-top button
     ensureBackToTopButtonIsWorking() {
         // Set a large viewport to ensure the page is scrollable
-        cy.viewport(1200, 2000);
+        // cy.viewport(1200, 2000);
 
         // Scroll to the very bottom using JavaScript for reliability
-        cy.window().then(win => {
-            win.scrollTo(0, document.body.scrollHeight);
-        });
+        cy.scrollTo('bottom', { ensureScrollable: false });
+        cy.wait(500); // Wait a bit after scrolling
 
         // Wait for the button to appear after scrolling
         cy.get('[data-cy="backToTopButton"]', { timeout: 10000 }).should('be.visible');

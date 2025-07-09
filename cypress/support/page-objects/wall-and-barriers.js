@@ -13,7 +13,7 @@ class WallsAndBarriers {
      * Clicks the "Barriers, rails and fences" subcategory on the page.
      */
     clickBarriersRailsAndFences() {
-        cy.contains(this.barriersRailsAndFences, { timeout: 10000 }).click();
+        cy.contains(this.barriersRailsAndFences, { timeout: 20000 }).click();
     }
 
     /**

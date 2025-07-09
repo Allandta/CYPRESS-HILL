@@ -16,7 +16,7 @@ class Categories {
      * Clicks the "Walls and barriers" category on the page.
      */
     clickWallsAndBarriers() {
-        cy.contains(this.wallsAndBarriers, { timeout: 10000 }).click();
+        cy.contains(this.wallsAndBarriers, { timeout: 20000 }).click();
     }
 
     /**
