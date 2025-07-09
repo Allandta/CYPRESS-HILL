@@ -39,16 +39,19 @@ describe('Source Categories Navigation & Tests', () => {
     });
 
     it('Generate report showing any Accessibility violations', () => {
+        WallsAndBarriers.clickBarriersRailsAndFences();
         // Run accessibility checks using axe and log any violations.
         BarrierRailsFences.injectAxeAndCheckForUsabilityViolations();
     });
 
     it('Compare current snapshot with baseline and highlight any differences', () => {
+        WallsAndBarriers.clickBarriersRailsAndFences();
         // Take a visual snapshot of the homepage and compare it to the baseline image.
         BarrierRailsFences.compareSnapshots();
     });
 
     it('should show and operate the Back to Top button', () => {
+        WallsAndBarriers.clickBarriersRailsAndFences();
         BarrierRailsFences.ensureBackToTopButtonIsWorking();
     });
 });
