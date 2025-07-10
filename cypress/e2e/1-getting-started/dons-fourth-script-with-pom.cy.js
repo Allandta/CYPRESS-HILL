@@ -49,6 +49,17 @@ describe('Source Categories Navigation & Tests', () => {
     });
 
     it('should show and operate the Back to Top button', () => {
+        WallsAndBarriers.clickBarriersRailsAndFences();
         BarrierRailsFences.ensureBackToTopButtonIsWorking();
+    });
+
+    it('should display correct breadcrumbs', () => {
+        WallsAndBarriers.clickBarriersRailsAndFences();
+        // Check the breadcrumb structure and content
+        BarrierRailsFences.testBreadcrumbs();
+    });
+
+    it('should display the correct sales support email', () => {
+        BarrierRailsFences.checkSalesSupportEmail();
     });
 });
