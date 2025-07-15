@@ -26,7 +26,12 @@ module.exports = defineConfig({
       addMatchImageSnapshotPlugin(on, config);
       return config;
     },
-    specPattern: "cypress/e2e/**/*.feature", // Use .feature files for Cucumber
+    specPattern: [
+      "cypress/e2e/**/*.feature",
+      "cypress/e2e/**/*.cy.js",
+      "cypress/e2e/**/*.spec.js"
+    ],
+    
   },
 });
 
