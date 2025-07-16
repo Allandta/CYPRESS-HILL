@@ -3,8 +3,6 @@
 // Import page objects
 import NBSHomepage from "../page-objects/nbs-homepage";
 import Categories from "../page-objects/categories";
-import WallsAndBarriers from "../page-objects/wall-and-barriers";
-import BarriersRailsAndFences from "../page-objects/barriers-rails-and-fences";
 
 // Import Cucumber preprocessor functions
 import { Given, Then, Before } from "@badeball/cypress-cucumber-preprocessor";
@@ -16,9 +14,9 @@ Given(`I click on the Browse Categories button`, () => {
 });
 
 // Then step to verify the href attribute of the Source logo
-Then(`I will be directed to the Walls and barriers category`, () => {
-  Categories.verifyWallAndBarriersCategory();
-  Categories.checkURLContainsExpectedText('walls-and-barriers');
+Then(`I will be directed to the Walls and barriers category`, (url, expectedText) => {
+  Categories.verifyWallAndBarriersCategory(url);
+  Categories.checkURLContainsExpectedText(expectedText);
 });
 
 // Then step to verify the href attribute of the Source logo
