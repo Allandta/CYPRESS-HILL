@@ -36,6 +36,8 @@ class BarrierRailsFences {
             failureThresholdType: 'percent',
         });
     }
+
+    // TODO -this method doesnt adhere to the POM, Locators should be at the top, Actions underneath
     // ensure the back-to-top button is working as expected
     // This method scrolls to the bottom of the page, clicks the back-to-top button
     ensureBackToTopButtonIsWorking() {
@@ -89,4 +91,4 @@ class BarrierRailsFences {
 
 }
 // Export a singleton instance of the NBSHomepage class
-export default new BarrierRailsFences();
+module.exports = new BarrierRailsFences();

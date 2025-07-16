@@ -37,4 +37,4 @@ class Categories {
 }
 
 // Export a singleton instance of the Categories class for use in tests.
-export default new Categories();
+module.exports = new Categories();
