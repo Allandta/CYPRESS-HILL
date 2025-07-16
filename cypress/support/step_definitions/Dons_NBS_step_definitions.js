@@ -13,12 +13,12 @@ Given(`I click on the Browse Categories button`, () => {
   NBSHomepage.clickBrowseCategories();
 });
 
-// Then step to verify the correct categories are displayed and the URL contains expected text
+// Then step to verify the URL contains expected text
 Then(`I will be directed to the {string} category page`, (expectedText) => {
   Categories.checkURLContainsExpectedText(expectedText);
 });
 
-// Then step to verify the href attribute of the Source logo
+// Then step to verify the expected sub categories are displayed
 Then('The expected subcategory {string} will be displayed', (subcategory) => {
   Categories.checkSubcategoryExists(subcategory);
 });
