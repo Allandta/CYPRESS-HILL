@@ -18,6 +18,6 @@ Scenario Outline: Subcategory is displayed
 Examples:
   | subcategory                       |
   | Walls and barriers                |
-  | Plumbing fixtures and accessories |
+  | General building products         |
   | Plumbing and waste disposal       |
 
