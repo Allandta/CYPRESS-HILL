@@ -24,7 +24,7 @@ class Categories {
      * @param {string} expectedText - The text expected to be found in the URL.
      */
     checkURLContainsExpectedText(expectedText) {
-        cy.url().should('include', expectedText, { timeout: 10000 });
+        cy.url({ timeout: 10000 }).should('include', expectedText);
     }
 
     /**
@@ -32,7 +32,7 @@ class Categories {
      * @param {string} subcategory - The subcategory text to check for.
      */
     checkSubcategoryExists(subcategory) {
-        cy.contains(subcategory).should('exist', { timeout: 10000 });
+        cy.contains(subcategory, { timeout: 10000 }).should('exist');
     }
 }
 
