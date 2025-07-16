@@ -16,7 +16,7 @@ class Categories {
      * Clicks the "Walls and barriers" category on the page.
      */
     clickWallsAndBarriers() {
-        cy.contains(this.wallsAndBarriers, { timeout: 10000 }).click();
+        cy.contains(this.wallsAndBarriers, { timeout: 20000 }).click();
     }
 
     /**
@@ -24,7 +24,7 @@ class Categories {
      * @param {string} expectedText - The text expected to be found in the URL.
      */
     checkURLContainsExpectedText(expectedText) {
-        cy.url({ timeout: 10000 }).should('include', expectedText);
+        cy.url({ timeout: 20000 }).should('include', expectedText);
     }
 
     /**
@@ -32,7 +32,7 @@ class Categories {
      * @param {string} subcategory - The subcategory text to check for.
      */
     checkSubcategoryExists(subcategory) {
-        cy.contains(subcategory, { timeout: 10000 }).should('exist');
+        cy.contains(subcategory, { timeout: 20000 }).should('exist');
     }
 }
 

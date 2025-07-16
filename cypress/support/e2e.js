@@ -17,4 +17,4 @@
 import './commands'
 import { addMatchImageSnapshotCommand } from 'cypress-image-snapshot/command';
 addMatchImageSnapshotCommand();
-import "@badeball/cypress-cucumber-preprocessor/support";
+import "@badeball/cypress-cucumber-preprocessor";
