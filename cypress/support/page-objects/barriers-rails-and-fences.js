@@ -36,6 +36,9 @@ class BarrierRailsFences {
             failureThresholdType: 'percent',
         });
     }
+
+    // TODO -this method doesnt adhere to the POM, Locators should be at the top, Actions underneath
+
     // ensure the back-to-top button is working as expected
     // This method scrolls to the bottom of the page, clicks the back-to-top button
     ensureBackToTopButtonIsWorking() {
@@ -49,6 +52,7 @@ class BarrierRailsFences {
         cy.window().its('scrollY').should('be.lessThan', 50);
     }
 
+    // TODO -this method doesnt adhere to the POM, Locators should be at the top, Actions underneath
     testBreadcrumbs() {
         // Check the breadcrumb structure and content
         cy.get('ul') // Use a more specific selector if possible
@@ -77,6 +81,8 @@ class BarrierRailsFences {
                     .should('not.exist');
             });
     }
+
+    // TODO -this method doesnt adhere to the POM, Locators should be at the top, Actions underneath
     // Check the presence and functionality of the sales support email link
     checkSalesSupportEmail() {
         cy.get('a[title^="Email salessupport@theNBS.com"]')
@@ -89,4 +95,4 @@ class BarrierRailsFences {
 
 }
 // Export a singleton instance of the NBSHomepage class
-export default new BarrierRailsFences();
+module.exports = new BarrierRailsFences();

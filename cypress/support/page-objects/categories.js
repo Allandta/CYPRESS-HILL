@@ -8,7 +8,7 @@ class Categories {
     walls = 'Walls'; // Text for the "Walls" subcategory
     balustradeAndHandrailSystems = 'Balustrade and handrail systems'; // Text for the "Balustrade and handrail systems" subcategory
 
-    // ------------------------
+    // -----------------------
     // Actions
     // Define all actions (methods that interact with the page) below.
 
@@ -16,7 +16,7 @@ class Categories {
      * Clicks the "Walls and barriers" category on the page.
      */
     clickWallsAndBarriers() {
-        cy.contains(this.wallsAndBarriers, { timeout: 10000 }).click();
+        cy.contains(this.wallsAndBarriers, { timeout: 20000 }).click();
     }
 
     /**
@@ -24,7 +24,7 @@ class Categories {
      * @param {string} expectedText - The text expected to be found in the URL.
      */
     checkURLContainsExpectedText(expectedText) {
-        cy.url().should('include', expectedText);
+        cy.url({ timeout: 20000 }).should('include', expectedText);
     }
 
     /**
@@ -32,9 +32,9 @@ class Categories {
      * @param {string} subcategory - The subcategory text to check for.
      */
     checkSubcategoryExists(subcategory) {
-        cy.contains(subcategory).should('exist');
+        cy.contains(subcategory, { timeout: 20000 }).should('exist');
     }
 }
 
 // Export a singleton instance of the Categories class for use in tests.
-export default new Categories();
+module.exports = new Categories();

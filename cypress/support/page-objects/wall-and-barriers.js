@@ -16,6 +16,7 @@ class WallsAndBarriers {
         cy.contains(this.barriersRailsAndFences, { timeout: 10000 }).click();
     }
 
+
     /**
      * Clicks the "Balustrade and handrail systems" subcategory on the page.
      */
@@ -25,4 +26,4 @@ class WallsAndBarriers {
 }
 
 // Export a singleton instance of the WallsAndBarriers class for use in tests.
-export default new WallsAndBarriers();
+module.exports = new WallsAndBarriers();

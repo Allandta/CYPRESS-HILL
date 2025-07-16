@@ -22,7 +22,7 @@ class NBSHomepage {
      * Clicks the 'Browse categories' button on the homepage.
      */
     clickBrowseCategories() {
-        cy.contains(this.categoriesButton).click();
+        cy.contains(this.categoriesButton, { timeout: 10000 }).click();
     }
 
     /**
@@ -52,4 +52,4 @@ class NBSHomepage {
 }
 
 // Export a singleton instance of the NBSHomepage class for use in tests.
-export default new NBSHomepage();
+module.exports = new NBSHomepage();
