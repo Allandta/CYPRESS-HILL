@@ -20,6 +20,8 @@ Then(`I will be directed to the {string} category page`, (expectedText) => {
 
 // Then step to verify the expected sub categories are displayed
 Then('The expected subcategory {string} will be displayed', (subcategory) => {
+    NBSHomepage.visitNBSHomePageAndClickAcceptCookies();
+  NBSHomepage.clickBrowseCategories();
   Categories.checkSubcategoryExists(subcategory);
 });
 
