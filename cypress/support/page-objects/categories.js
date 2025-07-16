@@ -8,7 +8,7 @@ class Categories {
     walls = 'Walls'; // Text for the "Walls" subcategory
     balustradeAndHandrailSystems = 'Balustrade and handrail systems'; // Text for the "Balustrade and handrail systems" subcategory
 
-    // ------------------------
+    // -----------------------
     // Actions
     // Define all actions (methods that interact with the page) below.
 
