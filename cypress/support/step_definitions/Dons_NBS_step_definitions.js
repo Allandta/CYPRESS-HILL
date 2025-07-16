@@ -13,16 +13,15 @@ Given(`I click on the Browse Categories button`, () => {
   NBSHomepage.clickBrowseCategories();
 });
 
-// Then step to verify the href attribute of the Source logo
-Then(`I will be directed to the Walls and barriers category`, (url, expectedText) => {
-  Categories.verifyWallAndBarriersCategory(url);
+// Then step to verify the correct categories are displayed and the URL contains expected text
+Then(`I will be directed to the {string} category page`, (expectedText) => {
   Categories.checkURLContainsExpectedText(expectedText);
 });
 
 // Then step to verify the href attribute of the Source logo
-Then(`The expected categories will be displayed`, (([subcategory]) => {
+Then('The expected subcategory {string} will be displayed', (subcategory) => {
   Categories.checkSubcategoryExists(subcategory);
-}));
+});
 
 
 

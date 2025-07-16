@@ -10,16 +10,14 @@
 
 Feature: Dyson Homepage Regression Tests
 
-Scenario Outline: Clicking Browse categories button will navigate to <url> and ensure subcategories are present
-    Given I click on the Browse Categories button
-    Then I will be directed to the <url> category page 
-    And The expected categories will be displayed:
-        | <subcategory1> |
-        | <subcategory2> |
-        | <subcategory3> |
+Scenario Outline: Subcategory is displayed
+  Given I click on the Browse Categories button
+  Then I will be directed to the "categories" category page
+  And The expected subcategory "<subcategory>" will be displayed
 
 Examples:
-    | url                        | subcategory1                 | subcategory2      | subcategory3 |
-    | Walls and barriers         | Barriers, rails and fences   | Living walls      | Walls        |
-    | Outdoor spaces             | Patios                       | Decks             | Pergolas     |
+  | subcategory                       |
+  | Walls and barriers                |
+  | Plumbing fixtures and accessories |
+  | Plumbing and waste disposal       |
 
