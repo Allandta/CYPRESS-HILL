@@ -15,8 +15,14 @@ class NBSHomepage {
      * Clicks the 'Accept All Cookies' button on the homepage.
      */
     acceptCookies() {
-        cy.contains(this.acceptCookiesButton, 'Accept All Cookies').click();
-    }
+    cy.get('button')
+      .contains('Accept All Cookies')
+      .then($btn => {
+        if ($btn.length) {
+          cy.wrap($btn).click();
+        }
+      });
+}
 
     /**
      * Clicks the 'Browse categories' button on the homepage.
